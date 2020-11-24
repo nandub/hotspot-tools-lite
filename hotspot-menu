@@ -93,8 +93,7 @@ do
             echo "checking for updates"
             cd $DIR
             git fetch --all
-            git reset --hard origin/dev
-            git pull
+            git reset --hard origin/master
             bash setup
             echo "Please restart HotSpot-Tools script to see changes."
   	        read -n 1 -s -r -p "Press any key to continue"
