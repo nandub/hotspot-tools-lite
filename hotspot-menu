@@ -5,6 +5,7 @@
 
 DIR=$HOME/hotspot-tools
 VER=$(cat $DIR/changelog | grep version= | sed 's/version=//')
+export DIR VER          ####  WB0SIO added 2020/11/25 for force hotspot
 
 PS3='Please enter your choice: '
 MAINMENU () {
@@ -42,7 +43,9 @@ echo "   Password "$CURRENTPASS
 echo "   IP Addr  "$HSIP  
 echo "------------------------------"
 echo
-options=("Change Name/Password" "Run Hotspot" "Disable Hotspot" "Enable Hotspot" "Manage IP" "Manage SSIDs" "Known SSIDs" "DHCP List" "Reload" "Update" "Exit")
+####  WB0SIO 2020/11/25 Added force hotspot and restore hotspot
+options=("Change Name/Password" "Run Hotspot" "Force Hotspot" "Restore Hotspot" "Disable Hotspot" "Enable Hotspot" "Manage IP" "Manage SSIDs" "Known SSIDs" "DHCP List" "Reload" "Update" "Exit")
+#### End WB0SIo 2020/11/25
 select opt in "${options[@]}"
 do
     case $opt in
@@ -60,6 +63,16 @@ do
             fi
             MAINMENU
             ;;
+        "Force Hotspot")   ####  WB0SIO added 2020/11/25
+            $DIR/force-hotspot
+            sleep 3
+            MAINMENU
+            ;;
+        "Restore Hotspot")
+            $DIR/restore-hotspot
+            sleep 3
+            MAINMENU
+            ;;             #### End WB0SIO added 2020/11/25
         "Disable Hotspot")
             $DIR/disable
             sleep 3

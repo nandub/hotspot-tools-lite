@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#setup script for hotspot tools
+#20200221 km4ack
+#20200414 wb0sio
+#20200819 wb0sio created setup-lite for raspian os lite
+
+DIR=$HOME/hotspot-tools
+
+#chmod all files
+cd $DIR
+chmod a+x force-hotspot restore-hotspot disable enable hotspot-menu hotspotname knowssid manage-ip wificonnect
+#create symlink in /usr/local/bin
+sudo ln -sf $DIR/hotspot-menu /usr/local/bin/hs-tools  
+
+
